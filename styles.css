@@ -1,3 +1,13 @@
-.content {
+.container {
     margin: auto;
+    height: 100vh;
+}
+
+.contador {
+    overflow: hidden;
+}
+
+.tabela {
+    height: 50vh;
+    overflow-y: auto;
 }

@@ -3,4 +3,8 @@ Registar numa lista (array), , todos os eventos que foram realizados (plus e min
 Cria uma mini estrutura de dados (um object com operation, oldValue, newValue e timestamp)
     - Lista deve conter este tipo de objetos
 
-Imprimir lista na UI (mais recente para mais antiga)
+Imprimir lista na UI (mais recente para mais antiga)´
+
+timestamp unix --
+scroll na tabela --
+filter de registos na tabela --
