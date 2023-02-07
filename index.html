@@ -29,45 +29,18 @@
                 </div>
             </div>
 
-            <!--
-                <div class="filter">
-                    <div class="row text-center">
-                        <div class="col-md">
-                            <label for="filter">Choose Filter</label>
-                            <select class="form-control" id="filter">
-                                <option value="Operation">Operation</option>
-                                <option value="OldValue">Old Value</option>
-                                <option value="NewValue" selected>New Value</option>
-                            </select>
-                        </div>
-                        <div class="col-md">
-                            <label for="myInput">Type Something</label>
-                            <input class="form-control" type="text" id="myInput" onkeyup="mySearch()" placeholder="...">
-                        </div>
+            <div class="filter">
+                <div class="row text-center">
+                    <div class="col-md">
+                        <label for="myInput">Type Something</label>
+                        <input class="form-control" type="text" id="myInput" onkeyup="updateUi()" placeholder="...">
                     </div>
-                </div> 
-            -->
+                </div>
+            </div>     
             
 
-            <div class="tabela row text-center">
-                <div class="col-md">
-                    <table id="myTablePlus" class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Operation</th>
-                                <th scope="col">OldValue</th>
-                                <th scope="col">NewValue</th>
-                                <th scope="col">TimeStamp</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablePlus">
-                            <!--Registos-->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="col-md">
+            <div class="row text-center">
+                <div class="tabela col-md">
                     <table id="myTableMinus" class="table">
                         <thead>
                             <tr>
@@ -79,6 +52,23 @@
                             </tr>
                         </thead>
                         <tbody id="tableMinus">
+                            <!--Registos-->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tabela col-md">
+                    <table id="myTablePlus" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Operation</th>
+                                <th scope="col">OldValue</th>
+                                <th scope="col">NewValue</th>
+                                <th scope="col">TimeStamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablePlus">
                             <!--Registos-->
                         </tbody>
                     </table>
