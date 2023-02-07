@@ -33,20 +33,35 @@ const mySearch = (events_) => {
   input = document.getElementById("myInput").value;
   const filteredEvents = [];
   const eventsKeys = Object.keys(events[0]);
-  for (const event of events) {
-    timestamp_ = new Date(event.timestamp * 1000).toLocaleTimeString();
-    if (event.id.toString().includes(input)) {
+  //Criar string do evento todo
+  //verificar se alguma das palavras do input existe na string do evento
+  //array.sort -> o mySearch através disto (pesquisar isto)
+
+  for (const event of events_) {
+    let str = Object.keys(event)
+      .map((key) => `${event[key]}`)
+      .join(" ");
+    //input tem que ser escrito na ordem certa
+    bol = str.indexOf(input) > -1;
+    if (bol) {
       filteredEvents.push(event);
-    } else if (event.operation.includes(input)) {
-      filteredEvents.push(event);
-    } else if (event.oldCount.toString().includes(input)) {
-      filteredEvents.push(event);
-    } else if (event.count.toString().includes(input)) {
-      filteredEvents.push(event);
-    } else if (timestamp_.includes(input)) {
-      filteredEvents.push(event);
-    } else console.log("No more matches");
+    }
   }
+
+  // for (const event of events) {
+  //   timestamp_ = new Date(event.timestamp * 1000).toLocaleTimeString();
+  //   if (event.id.toString().includes(input)) {
+  //     filteredEvents.push(event);
+  //   } else if (input.includes(event.operation)) {
+  //     filteredEvents.push(event);
+  //   } else if (event.oldCount.toString().includes(input)) {
+  //     filteredEvents.push(event);
+  //   } else if (event.count.toString().includes(input)) {
+  //     filteredEvents.push(event);
+  //   } else if (timestamp_.includes(input)) {
+  //     filteredEvents.push(event);
+  //   } else console.log("No more matches");
+  // }
   return filteredEvents;
 };
 

@@ -11,3 +11,7 @@
     height: 50vh;
     overflow-y: auto;
 }
+
+.title {
+    margin-top: 25px;
+}
