@@ -4,7 +4,15 @@ const plus = document.getElementById("counter-plus");
 const tablePlus = document.getElementById("tablePlus");
 const tableMinus = document.getElementById("tableMinus");
 const inputField = document.getElementById("myInput");
+const myTableMinus = document.getElementById("myTableMinus");
 const events = [];
+const sortColumn = { header: "id", direction: 1 };
+
+const getHeader = (header) => {
+    sortColumn.direction = sortColumn.header === header ? sortColumn.direction * -1 : 1;
+    sortColumn.header = header;
+    updateUi(sortColumn);
+};
 
 plus.addEventListener("click", () => {
     const lastCount = events.slice(-1)[0]?.count || 0;
@@ -30,7 +38,19 @@ minus.addEventListener("click", () => {
     updateUi();
 });
 
-const mySearch = (events_) => {
+const sortId = (events_, direction_) => {
+    let sortedID = [];
+    sortedID = direction_ === 1 ? events_.sort((a, b) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0)) : events_.sort((a, b) => (b.id < a.id ? 1 : b.id > a.id ? -1 : 0));
+    return sortedID;
+};
+
+const sort = (events_, sortColumn_) => {
+    console.log(sortColumn_.header);
+    let sortedEvents = sortColumn_.header === "id" ? sortId(events_, sortColumn_.direction) : events_;
+    return sortedEvents;
+};
+
+const filter = (events_) => {
     const inputs = inputField.value.split(" ");
     const filteredEvents = events_.filter((event) => {
         const str = Object.entries(event)
@@ -44,7 +64,7 @@ const mySearch = (events_) => {
 const updateUi = () => {
     const lastEvent = events.slice(-1)[0];
     result.innerHTML = lastEvent?.count || 0;
-    createTable(mySearch(events));
+    createTable(sort(filter(events), sortColumn));
 };
 
 const createTable = (events_) => {
