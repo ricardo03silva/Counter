@@ -6,7 +6,8 @@ const tableMinus = document.getElementById("tableMinus");
 const inputField = document.getElementById("myInput");
 const myTableMinus = document.getElementById("myTableMinus");
 const events = [];
-const sortColumn = { header: "id", direction: 1 };
+let sortedEvents = [];
+const sortColumn = { header: "", direction: 1 };
 
 const getHeader = (header) => {
     sortColumn.direction = sortColumn.header === header ? sortColumn.direction * -1 : 1;
@@ -39,15 +40,39 @@ minus.addEventListener("click", () => {
 });
 
 const sortId = (events_, direction_) => {
-    let sortedID = [];
-    sortedID = direction_ === 1 ? events_.sort((a, b) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0)) : events_.sort((a, b) => (b.id < a.id ? 1 : b.id > a.id ? -1 : 0));
-    return sortedID;
+    sortedEvents = direction_ === 1 ? events_.sort((a, b) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0)) : events_.sort((a, b) => (b.id < a.id ? 1 : b.id > a.id ? -1 : 0));
+    return sortedEvents;
+};
+
+const sortOldCount = (events_, direction_) => {
+    sortedEvents = direction_ === 1 ? events_.sort((a, b) => (a.oldCount < b.oldCount ? 1 : a.oldCount > b.oldCount ? -1 : 0)) : events_.sort((a, b) => (b.oldCount < a.oldCount ? 1 : b.oldCount > a.oldCount ? -1 : 0));
+    return sortedEvents;
+};
+
+const sortCount = (events_, direction_) => {
+    sortedEvents = direction_ === 1 ? events_.sort((a, b) => (a.count < b.count ? 1 : a.count > b.count ? -1 : 0)) : events_.sort((a, b) => (b.count < a.count ? 1 : b.count > a.count ? -1 : 0));
+    return sortedEvents;
+};
+
+const sortTimestamp = (events_, direction_) => {
+    sortedEvents = direction_ === 1 ? events_.sort((a, b) => (a.timestamp < b.timestamp ? 1 : a.timestamp > b.timestamp ? -1 : 0)) : events_.sort((a, b) => (b.timestamp < a.timestamp ? 1 : b.timestamp > a.timestamp ? -1 : 0));
+    return sortedEvents;
 };
 
 const sort = (events_, sortColumn_) => {
-    console.log(sortColumn_.header);
-    let sortedEvents = sortColumn_.header === "id" ? sortId(events_, sortColumn_.direction) : events_;
-    return sortedEvents;
+    let sortedEvents_ =
+        sortColumn_.header === "default"
+            ? events_
+            : sortColumn_.header === "id"
+            ? sortId(events_, sortColumn_.direction)
+            : sortColumn_.header === "oldCount"
+            ? sortOldCount(events_, sortColumn_.direction)
+            : sortColumn_.header === "count"
+            ? sortCount(events_, sortColumn_.direction)
+            : sortColumn_.header === "timestamp"
+            ? sortTimestamp(events_, sortColumn_.direction)
+            : events_;
+    return sortedEvents_;
 };
 
 const filter = (events_) => {
