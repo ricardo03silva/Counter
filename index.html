@@ -31,7 +31,7 @@
                 <div class="row text-center">
                     <div class="col-md">
                         <label for="myInput">Type Something</label>
-                        <input class="form-control" type="text" id="myInput" onkeyup="updateUi()" placeholder="..." />
+                        <input class="form-control" type="text" id="myInput" onkeyup="updateInputArray()" placeholder="..." />
                     </div>
                 </div>
             </div>
@@ -41,11 +41,11 @@
                     <table id="myTableMinus" class="table">
                         <thead>
                             <tr>
-                                <th scope="col" onclick="getHeader('id')">id</th>
-                                <th scope="col" onclick="getHeader('operation')">operation</th>
-                                <th scope="col" onclick="getHeader('oldCount')">oldCount</th>
-                                <th scope="col" onclick="getHeader('count')">count</th>
-                                <th scope="col" onclick="getHeader('timestamp')">timestamp</th>
+                                <th scope="col" id="id" onclick="setSort('id')">id</th>
+                                <th scope="col" id="operation" onclick="setSort('operation')">operation</th>
+                                <th scope="col" id="oldCount" onclick="setSort('oldCount')">oldCount</th>
+                                <th scope="col" id="count" onclick="setSort('count')">count</th>
+                                <th scope="col" id="timestamp" onclick="setSort('timestamp')">timestamp</th>
                             </tr>
                         </thead>
                         <tbody id="tableMinus">
@@ -58,11 +58,11 @@
                     <table id="myTablePlus" class="table">
                         <thead>
                             <tr>
-                                <th scope="col" onclick="getHeader('id')">id</th>
-                                <th scope="col" onclick="getHeader('operation')">operation</th>
-                                <th scope="col" onclick="getHeader('oldCount')">oldCount</th>
-                                <th scope="col" onclick="getHeader('count')">count</th>
-                                <th scope="col" onclick="getHeader('timestamp')">timestamp</th>
+                                <th scope="col" id="id" onclick="setSort('id')">id</th>
+                                <th scope="col" id="operation" onclick="setSort('operation')">operation</th>
+                                <th scope="col" id="oldCount" onclick="setSort('oldCount')">oldCount</th>
+                                <th scope="col" id="count" onclick="setSort('count')">count</th>
+                                <th scope="col" id="timestamp" onclick="setSort('timestamp')">timestamp</th>
                             </tr>
                         </thead>
                         <tbody id="tablePlus">
