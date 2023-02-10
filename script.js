@@ -4,6 +4,7 @@ const plus = document.getElementById("counter-plus");
 const tablePlus = document.getElementById("tablePlus");
 const tableMinus = document.getElementById("tableMinus");
 const myTableMinus = document.getElementById("myTableMinus");
+let tableH = Array.from(document.getElementsByTagName("th"));
 let inputWords = [];
 const events = [];
 const sortColumn = { header: "", direction: 1 };
@@ -11,17 +12,11 @@ const sortColumn = { header: "", direction: 1 };
 const setSort = (header) => {
     sortColumn.direction = sortColumn.header === header ? sortColumn.direction * -1 : 1;
     sortColumn.header = header;
-    showArrow();
-    updateUi();
-};
-
-const showArrow = () => {
-    let tableH = Array.from(document.getElementsByTagName("th"));
     tableH.map((th) => {
         th.className = "";
         th.id.toString().includes(sortColumn.header) && sortColumn.direction === 1 ? (th.className = th.className + "desc") : th.id.toString().includes(sortColumn.header) ? (th.className = th.className + "asc") : (th.className = "");
     });
-    console.log(tableH);
+    updateUi();
 };
 
 plus.addEventListener("click", () => {

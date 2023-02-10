@@ -19,15 +19,12 @@
 .table .asc::after {
     display:inline;
     content: "▲";
+    margin-left: 5px;
 }
 
 .table .desc::after {
     display:inline;
     content: "▼";
-}
-
-.table .asc::after,
-.table .desc::after {
     margin-left: 5px;
 }
 
