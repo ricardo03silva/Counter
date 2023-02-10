@@ -11,15 +11,15 @@ const sortColumn = { header: "", direction: 1 };
 const setSort = (header) => {
     sortColumn.direction = sortColumn.header === header ? sortColumn.direction * -1 : 1;
     sortColumn.header = header;
-    showArrow(header);
+    showArrow();
     updateUi();
 };
 
-const showArrow = (header) => {
+const showArrow = () => {
     let tableH = Array.from(document.getElementsByTagName("th"));
     tableH.map((th) => {
-        th.className = '';
-        th.id.toString().includes(header) ? (th.className = th.className + " asc") : (th.className = th.className + " desc");
+        th.className = "";
+        th.id.toString().includes(sortColumn.header) && sortColumn.direction === 1 ? (th.className = th.className + "desc") : th.id.toString().includes(sortColumn.header) ? (th.className = th.className + "asc") : (th.className = "");
     });
     console.log(tableH);
 };

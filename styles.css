@@ -15,3 +15,23 @@
 .title {
     margin-top: 25px;
 }
+
+.table .asc::after {
+    display:inline;
+    content: "▲";
+}
+
+.table .desc::after {
+    display:inline;
+    content: "▼";
+}
+
+.table .asc::after,
+.table .desc::after {
+    margin-left: 5px;
+}
+
+.table .asc,
+.table .desc {
+	background: rgba(0, 0, 0, 0.1);
+}
